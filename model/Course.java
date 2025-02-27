@@ -15,7 +15,7 @@ public class Course {
     private ArrayList<Course> prerequisites;
     private ArrayList<Student> students;
     private Faculty teacher;
-
+    
     public Course(String title, String description, int courseCode, int credits, int CRN, char passingGrade, ArrayList<Course> prerequisites, ArrayList<Student> students, Faculty teacher) {
         this.title = title;
         this.description = description;
