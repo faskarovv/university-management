@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Course;
 
@@ -46,6 +48,44 @@ public class CourseService {
                 }
 
 
+                public List<Course>  getTakenCourses() throws FileNotFoundException, IOException{
+
+                    List<Course> list = new ArrayList<>();
+
+                
+                    try(BufferedReader reader = new BufferedReader(new FileReader(courseTaken))){
+                        String line;
+
+                        while((line = reader.readLine() )!= null){
+                           Course course =  csvToCourse(line);
+                            list.add(course);
+                        }
+                        
+                    }
+
+
+                    return list;
+                }
+
+                
+                private Course csvToCourse(String line) {
+                    Course course = new Course();
+                    
+                    String[] csv = line.split(",");
+                    char charr = csv[5].charAt(0);
+
+                    course.setTitle(csv[0]);
+                    course.setDescription(csv[1]);
+                    course.setCourseCode(Integer.parseInt(csv[2]));
+                    course.setCredits(Integer.parseInt(csv[3]));
+                    course.setCRN(Integer.parseInt(csv[4]));
+                    course.setPassingGrade(charr);
+                    course.setPrerequisiteCourses(null);
+                    course.setStudents(null);
+                    course.setTeacher(null);
+
+                    return course;
+                }
 
         
 }

@@ -27,6 +27,9 @@ public class Course {
         this.prerequisites = prerequisites;
         this.teacher = teacher;
     }
+    public Course(){
+        
+    }
 
     public String getTitle() { return title; }
     public String getDescription() { return description; }
